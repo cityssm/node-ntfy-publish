@@ -1,0 +1,41 @@
+{
+    "root": true,
+    "env": {
+        "es6": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json"],
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "import", "node", "unicorn"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "plugin:node/recommended",
+        "plugin:unicorn/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "node/no-missing-import": "off",
+        "unicorn/empty-brace-spaces": "off",
+        "unicorn/filename-case": [
+            "error",
+            {
+                "case": "camelCase",
+                "ignore": ["DB", "URL"]
+            }
+        ],
+        "unicorn/prefer-node-protocol": "off",
+        "unicorn/prevent-abbreviations": [
+            "error",
+            {
+                "allowList": {
+                    "tempAdmin": true
+                }
+            }
+        ]
+    }
+}
