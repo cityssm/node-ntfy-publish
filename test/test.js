@@ -10,6 +10,17 @@ describe("ntfy-publish", () => {
         });
         assert.strictEqual(success, true);
     });
+    it("Sends a message with an attachment", async () => {
+        const success = await ntfyPublish({
+            topic: ntfyTopic,
+            priority: "low",
+            message: "Test Message With Attachment",
+            tags: ["paperclip"],
+            attachmentURL: "https://raw.githubusercontent.com/cityssm/node-ntfy-publish/main/test/attachment.jpg",
+            cache: false
+        });
+        assert.strictEqual(success, true);
+    });
     it("Sends a message with additional settings", async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
@@ -19,7 +30,7 @@ describe("ntfy-publish", () => {
             tags: ["warning", "computer"],
             iconURL: "https://avatars.githubusercontent.com/cityssm",
             clickURL: "https://github.com/cityssm/node-ntfy-publish",
-            cache: false
+            cache: true
         });
         assert.strictEqual(success, true);
     });

@@ -21,6 +21,7 @@ export type NtfyMessageOptions = {
     cache?: boolean;
     clickURL?: string;
     iconURL?: string;
+    attachmentURL?: string;
 };
 
 export type FetchHeaders = {
@@ -29,5 +30,6 @@ export type FetchHeaders = {
     Tags?: string;
     Click?: string;
     Icon?: string;
+    Attach?: string;
     Cache?: "no";
 };

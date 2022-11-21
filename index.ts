@@ -40,6 +40,10 @@ export async function publish(ntfyMessage: types.NtfyMessageOptions) {
         messageHeaders.Icon = ntfyMessage.iconURL;
     }
 
+    if (ntfyMessage.attachmentURL) {
+        messageHeaders.Attach = ntfyMessage.attachmentURL;
+    }
+
     if ("cache" in ntfyMessage && !ntfyMessage.cache) {
         messageHeaders.Cache = "no";
     }

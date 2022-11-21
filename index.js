@@ -21,6 +21,9 @@ export async function publish(ntfyMessage) {
     if (ntfyMessage.iconURL) {
         messageHeaders.Icon = ntfyMessage.iconURL;
     }
+    if (ntfyMessage.attachmentURL) {
+        messageHeaders.Attach = ntfyMessage.attachmentURL;
+    }
     if ("cache" in ntfyMessage && !ntfyMessage.cache) {
         messageHeaders.Cache = "no";
     }
