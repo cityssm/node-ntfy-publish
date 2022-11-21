@@ -10,13 +10,24 @@ describe("ntfy-publish", () => {
         });
         assert.strictEqual(success, true);
     });
-    it("Sends a message with an attachment", async () => {
+    it("Sends a message with an external URL attachment", async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
             priority: "low",
-            message: "Test Message With Attachment",
+            message: "Test Message With External Attachment",
             tags: ["paperclip"],
-            attachmentURL: "https://raw.githubusercontent.com/cityssm/node-ntfy-publish/main/test/attachment.jpg",
+            fileAttachmentURL: "https://raw.githubusercontent.com/cityssm/node-ntfy-publish/main/test/attachment.jpg",
+            cache: false
+        });
+        assert.strictEqual(success, true);
+    });
+    it("Sends a message with a local file attachment", async () => {
+        const success = await ntfyPublish({
+            topic: ntfyTopic,
+            priority: "low",
+            message: "Test Message With Local Attachment",
+            tags: ["paperclip"],
+            fileAttachmentURL: ".\\test\\attachment.jpg",
             cache: false
         });
         assert.strictEqual(success, true);

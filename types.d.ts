@@ -9,7 +9,8 @@ export declare type NtfyMessageOptions = {
     cache?: boolean;
     clickURL?: string;
     iconURL?: string;
-    attachmentURL?: string;
+    fileAttachmentURL?: string;
+    fileName?: string;
 };
 export declare type FetchHeaders = {
     Title?: string;
@@ -18,5 +19,6 @@ export declare type FetchHeaders = {
     Click?: string;
     Icon?: string;
     Attach?: string;
+    Filename?: string;
     Cache?: "no";
 };
