@@ -27,7 +27,7 @@ export async function publish(ntfyMessage: types.NtfyMessageOptions) {
     if (ntfyMessage.title) {
         messageHeaders.Title = ntfyMessage.title;
     }
-    
+
     if (ntfyMessage.tags) {
         messageHeaders.Tags = ntfyMessage.tags.join(",");
     }
@@ -35,9 +35,13 @@ export async function publish(ntfyMessage: types.NtfyMessageOptions) {
     if (ntfyMessage.clickURL) {
         messageHeaders.Click = ntfyMessage.clickURL;
     }
-    
+
     if (ntfyMessage.iconURL) {
         messageHeaders.Icon = ntfyMessage.iconURL;
+    }
+
+    if ("cache" in ntfyMessage && !ntfyMessage.cache) {
+        messageHeaders.Cache = "no";
     }
 
     /*

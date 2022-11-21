@@ -5,7 +5,8 @@ describe("ntfy-publish", () => {
     it("Sends a message with minimal settings", async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
-            message: "Test Default Message"
+            message: "Test Default Message",
+            cache: true
         });
         assert.strictEqual(success, true);
     });
@@ -18,6 +19,7 @@ describe("ntfy-publish", () => {
             tags: ["warning", "computer"],
             iconURL: "https://avatars.githubusercontent.com/cityssm",
             clickURL: "https://github.com/cityssm/node-ntfy-publish",
+            cache: false
         });
         assert.strictEqual(success, true);
     });

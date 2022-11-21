@@ -6,6 +6,7 @@ export declare type NtfyMessageOptions = {
     title?: string;
     message: string;
     tags?: string[];
+    cache?: boolean;
     clickURL?: string;
     iconURL?: string;
 };
@@ -15,4 +16,5 @@ export declare type FetchHeaders = {
     Tags?: string;
     Click?: string;
     Icon?: string;
+    Cache?: "no";
 };

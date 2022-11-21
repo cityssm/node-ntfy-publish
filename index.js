@@ -21,6 +21,9 @@ export async function publish(ntfyMessage) {
     if (ntfyMessage.iconURL) {
         messageHeaders.Icon = ntfyMessage.iconURL;
     }
+    if ("cache" in ntfyMessage && !ntfyMessage.cache) {
+        messageHeaders.Cache = "no";
+    }
     const response = await fetch(server + ntfyMessage.topic, {
         method: "POST",
         body: ntfyMessage.message,
