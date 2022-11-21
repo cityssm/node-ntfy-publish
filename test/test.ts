@@ -2,12 +2,14 @@ import * as assert from "assert";
 
 import ntfyPublish from "../index.js";
 
+const ntfyTopic = "github_cityssm_node-ntfy-publish_test";
+
 describe("ntfy-publish", () => {
 
     it("Sends a message with minimal settings", async () => {
 
         const success = await ntfyPublish({
-            topic: "cityssm-test",
+            topic: ntfyTopic,
             message: "Test Default Message"
         });
 
@@ -17,7 +19,7 @@ describe("ntfy-publish", () => {
     it("Sends a message with additional settings", async () => {
 
         const success = await ntfyPublish({
-            topic: "cityssm-test",
+            topic: ntfyTopic,
             priority: "high",
             title: "Test High Priority Message",
             message: "1, 2, 3",
