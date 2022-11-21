@@ -38,7 +38,7 @@ describe("ntfy-publish", () => {
             priority: "low",
             message: "Test Message With Local Attachment",
             tags: ["paperclip"],
-            fileAttachmentURL: ".\\test\\attachment.jpg",
+            fileAttachmentURL: "./test/attachment.jpg",
             cache: false
         });
 
