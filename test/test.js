@@ -5,7 +5,8 @@ describe("ntfy-publish", () => {
     it("Sends a message with minimal settings", async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
-            message: "Test Default Message",
+            title: "Test Default Message",
+            message: "Testing 1, 2, 3",
             cache: true
         });
         assert.strictEqual(success, true);
@@ -14,7 +15,7 @@ describe("ntfy-publish", () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
             priority: "low",
-            message: "Test Message With External Attachment",
+            title: "Test Message With External Attachment",
             tags: ["paperclip"],
             fileAttachmentURL: "https://raw.githubusercontent.com/cityssm/node-ntfy-publish/main/test/attachment.jpg",
             cache: false
@@ -25,7 +26,7 @@ describe("ntfy-publish", () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
             priority: "low",
-            message: "Test Message With Local Attachment",
+            title: "Test Message With Local Attachment",
             tags: ["paperclip"],
             fileAttachmentURL: "./test/attachment.jpg",
             fileName: "waterfront.jpg",
