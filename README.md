@@ -4,7 +4,7 @@
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/cityssm/node-ntfy-publish)](https://codeclimate.com/github/cityssm/node-ntfy-publish)
 [![Code Climate coverage](https://img.shields.io/codeclimate/coverage/cityssm/node-ntfy-publish)](https://codeclimate.com/github/cityssm/node-ntfy-publish)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cityssm/node-ntfy-publish/Coverage%20Testing)](https://github.com/cityssm/node-ntfy-publish/actions/workflows/coverage.yml)
-[![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/cityssm/node-ntfy-publish)](https://app.snyk.io/org/cityssm/project/9cb1ed49-d59d-48a4-92aa-410b151c22ae)
+[![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/cityssm/node-ntfy-publish)](https://app.snyk.io/org/cityssm/project/24e0da45-ac45-4d7b-b412-38472c3cde61)
 
 A Node package to publish push notifications to a phone or desktop
 through an [ntfy](https://ntfy.sh/) server.
