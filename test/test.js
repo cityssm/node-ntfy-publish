@@ -28,6 +28,7 @@ describe("ntfy-publish", () => {
             message: "Test Message With Local Attachment",
             tags: ["paperclip"],
             fileAttachmentURL: "./test/attachment.jpg",
+            fileName: "waterfront.jpg",
             cache: false
         });
         assert.strictEqual(success, true);
