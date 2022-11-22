@@ -4,7 +4,7 @@ export declare type NtfyMessageOptions = {
     topic: string;
     priority?: NtfyMessagePriority;
     title?: string;
-    message: string;
+    message?: string;
     tags?: string[];
     cache?: boolean;
     clickURL?: string;

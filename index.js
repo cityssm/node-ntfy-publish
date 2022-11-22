@@ -42,7 +42,7 @@ export async function publish(ntfyMessage) {
     }
     const response = await fetch(server + ntfyMessage.topic, {
         method: "POST",
-        body: hasLocalAttachment ? fileData : ntfyMessage.message,
+        body: hasLocalAttachment ? fileData : (ntfyMessage.message || ""),
         headers: messageHeaders
     });
     return response.ok;
