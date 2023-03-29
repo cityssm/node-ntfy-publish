@@ -6,28 +6,49 @@ permissions: read-all
 
 jobs:
   Coverage:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [ 14, 16, 18 ]
     env:
       CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    name: Node ${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: ${{ matrix.node }}
+
       - name: Install Module
         run: |
           npm ci
           npm install -g mocha c8
-      - name: Run Coverage Testing
-        run: c8 --reporter=lcov --reporter=text --reporter=text-summary mocha
-      - name: Code Climate
-        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' }}
+
+      - name: Code Climate (Before)
+        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 16 }}
         run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./codeclimate-test-reporter
           chmod +x codeclimate-test-reporter
           ./codeclimate-test-reporter before-build
+
+      - name: Run Coverage Testing
+        run: c8 --reporter=lcov --reporter=text --reporter=text-summary mocha
+
+      - name: Code Climate (After)
+        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 16 }}
+        run: |
           ./codeclimate-test-reporter after-build -t lcov --exit-code $?
+
       - name: Codacy
         if: ${{ github.event_name != 'pull_request' && env.CODACY_PROJECT_TOKEN != '' }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info
+      
+      - name: Codecov
+        if: ${{ github.event_name != 'pull_request' && env.CODECOV_TOKEN != '' && matrix.node == 16 }}
+        run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -t ${CODECOV_TOKEN}
