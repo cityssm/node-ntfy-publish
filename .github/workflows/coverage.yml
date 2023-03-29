@@ -43,7 +43,7 @@ jobs:
           ./codeclimate-test-reporter after-build -t lcov --exit-code $?
 
       - name: Codacy
-        if: ${{ github.event_name != 'pull_request' && env.CODACY_PROJECT_TOKEN != '' }}
+        if: ${{ github.event_name != 'pull_request' && env.CODACY_PROJECT_TOKEN != ''  && matrix.node == 16 }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info
 
       - name: Codecov
