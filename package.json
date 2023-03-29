@@ -1,36 +1,36 @@
 {
-    "name": "@cityssm/ntfy-publish",
-    "version": "0.2.1",
-    "type": "module",
-    "description": "A Node package to publish notifications to an ntfy server.",
-    "exports": "./index.js",
-    "scripts": {
-        "test": "mocha",
-        "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary mocha"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/cityssm/node-ntfy-publish.git"
-    },
-    "keywords": [
-        "ntfy",
-        "notifications",
-        "push-notifications",
-        "messages",
-        "alerts"
-    ],
-    "author": "The Corporation of the City of Sault Ste. Marie",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/cityssm/node-ntfy-publish/issues"
-    },
-    "homepage": "https://github.com/cityssm/node-ntfy-publish#readme",
-    "dependencies": {
-        "node-fetch": "^3.3.0"
-    },
-    "devDependencies": {
-        "@types/assert": "^1.5.6",
-        "@types/mocha": "^10.0.1",
-        "@types/node": "^18.11.17"
-    }
+  "name": "@cityssm/ntfy-publish",
+  "version": "0.2.1",
+  "type": "module",
+  "description": "A Node package to publish notifications to an ntfy server.",
+  "exports": "./index.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cityssm/node-ntfy-publish.git"
+  },
+  "keywords": [
+    "ntfy",
+    "notifications",
+    "push-notifications",
+    "messages",
+    "alerts"
+  ],
+  "author": "The Corporation of the City of Sault Ste. Marie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cityssm/node-ntfy-publish/issues"
+  },
+  "homepage": "https://github.com/cityssm/node-ntfy-publish#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/assert": "^1.5.6",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.15.11"
+  }
 }
