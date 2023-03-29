@@ -1,11 +1,11 @@
-import * as fs from "node:fs/promises";
-import fetch from "node-fetch";
-export const DEFAULT_SERVER = "https://ntfy.sh";
-export const DEFAULT_PRIORITY = "default";
+import * as fs from 'node:fs/promises';
+import fetch from 'node-fetch';
+export const DEFAULT_SERVER = 'https://ntfy.sh';
+export const DEFAULT_PRIORITY = 'default';
 export async function publish(ntfyMessage) {
     let server = ntfyMessage.server || DEFAULT_SERVER;
-    if (server.slice(-1) !== "/") {
-        server += "/";
+    if (server.slice(-1) !== '/') {
+        server += '/';
     }
     const messageHeaders = {
         Priority: ntfyMessage.priority || DEFAULT_PRIORITY
@@ -14,7 +14,7 @@ export async function publish(ntfyMessage) {
         messageHeaders.Title = ntfyMessage.title;
     }
     if (ntfyMessage.tags) {
-        messageHeaders.Tags = ntfyMessage.tags.join(",");
+        messageHeaders.Tags = ntfyMessage.tags.join(',');
     }
     if (ntfyMessage.clickURL) {
         messageHeaders.Click = ntfyMessage.clickURL;
@@ -24,8 +24,8 @@ export async function publish(ntfyMessage) {
     }
     let hasLocalAttachment = false;
     if (ntfyMessage.fileAttachmentURL) {
-        hasLocalAttachment = !(ntfyMessage.fileAttachmentURL.toLowerCase().startsWith("http://") ||
-            ntfyMessage.fileAttachmentURL.toLowerCase().startsWith("https://"));
+        hasLocalAttachment = !(ntfyMessage.fileAttachmentURL.toLowerCase().startsWith('http://') ||
+            ntfyMessage.fileAttachmentURL.toLowerCase().startsWith('https://'));
         if (!hasLocalAttachment) {
             messageHeaders.Attach = ntfyMessage.fileAttachmentURL;
         }
@@ -37,12 +37,12 @@ export async function publish(ntfyMessage) {
     if (ntfyMessage.fileName) {
         messageHeaders.Filename = ntfyMessage.fileName;
     }
-    if ("cache" in ntfyMessage && !ntfyMessage.cache) {
-        messageHeaders.Cache = "no";
+    if ('cache' in ntfyMessage && !ntfyMessage.cache) {
+        messageHeaders.Cache = 'no';
     }
     const response = await fetch(server + ntfyMessage.topic, {
-        method: "POST",
-        body: hasLocalAttachment ? fileData : (ntfyMessage.message || ""),
+        method: 'POST',
+        body: hasLocalAttachment ? fileData : ntfyMessage.message || '',
         headers: messageHeaders
     });
     return response.ok;
