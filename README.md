@@ -31,3 +31,7 @@ await ntfyPublish({
 
 For information on how to subscribe to notifications on your phone or desktop,
 [visit the ntfy website](https://ntfy.sh/).
+
+## Related Projects on NPM
+
+- [ntfy](https://www.npmjs.com/package/ntfy) - Send notifications over ntfy.sh
