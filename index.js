@@ -1,9 +1,9 @@
-import * as fs from 'node:fs/promises';
+import fs from 'node:fs/promises';
 export const DEFAULT_SERVER = 'https://ntfy.sh';
 export const DEFAULT_PRIORITY = 'default';
 export async function publish(ntfyMessage) {
     let server = ntfyMessage.server ?? DEFAULT_SERVER;
-    if (server.slice(-1) !== '/') {
+    if (!server.endsWith('/')) {
         server += '/';
     }
     const messageHeaders = {
@@ -29,10 +29,9 @@ export async function publish(ntfyMessage) {
             messageHeaders.Attach = ntfyMessage.fileAttachmentURL;
         }
     }
-    let fileData;
-    if (hasLocalAttachment) {
-        fileData = await fs.readFile(ntfyMessage.fileAttachmentURL);
-    }
+    const fileData = hasLocalAttachment
+        ? await fs.readFile(ntfyMessage.fileAttachmentURL)
+        : undefined;
     if (ntfyMessage.fileName !== undefined) {
         messageHeaders.Filename = ntfyMessage.fileName;
     }

@@ -1,4 +1,4 @@
-import * as fs from 'node:fs/promises'
+import fs from 'node:fs/promises'
 
 import type {
   FetchHeaders,
@@ -18,7 +18,7 @@ export async function publish(
 
   let server = ntfyMessage.server ?? DEFAULT_SERVER
 
-  if (server.slice(-1) !== '/') {
+  if (!server.endsWith('/')) {
     server += '/'
   }
 
@@ -61,11 +61,9 @@ export async function publish(
     }
   }
 
-  let fileData: Buffer | undefined
-
-  if (hasLocalAttachment) {
-    fileData = await fs.readFile(ntfyMessage.fileAttachmentURL as string)
-  }
+  const fileData = hasLocalAttachment
+    ? await fs.readFile(ntfyMessage.fileAttachmentURL as string)
+    : undefined
 
   if (ntfyMessage.fileName !== undefined) {
     messageHeaders.Filename = ntfyMessage.fileName
