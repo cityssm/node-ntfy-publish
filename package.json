@@ -1,6 +1,6 @@
 {
   "name": "@cityssm/ntfy-publish",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "type": "module",
   "description": "A Node package to publish notifications to an ntfy server.",
   "engines": {
