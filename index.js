@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 export const DEFAULT_SERVER = 'https://ntfy.sh';
 export const DEFAULT_PRIORITY = 'default';
-export async function publish(ntfyMessage) {
+export default async function publish(ntfyMessage) {
     let server = ntfyMessage.server ?? DEFAULT_SERVER;
     if (!server.endsWith('/')) {
         server += '/';
@@ -45,4 +45,3 @@ export async function publish(ntfyMessage) {
     });
     return response.ok;
 }
-export default publish;

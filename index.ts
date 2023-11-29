@@ -9,7 +9,7 @@ import type {
 export const DEFAULT_SERVER = 'https://ntfy.sh'
 export const DEFAULT_PRIORITY: NtfyMessagePriority = 'default'
 
-export async function publish(
+export default async function publish(
   ntfyMessage: NtfyMessageOptions
 ): Promise<boolean> {
   /*
@@ -93,5 +93,3 @@ export type {
   NtfyMessageOptions,
   NtfyMessagePriority
 } from './types.js'
-
-export default publish
