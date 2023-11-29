@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [14, 16, 18]
+        node: [18, 20, 21]
     env:
       CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
           npm install -g mocha c8
 
       - name: Code Climate (Before)
-        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 16 }}
+        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 20 }}
         run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./codeclimate-test-reporter
           chmod +x codeclimate-test-reporter
@@ -38,16 +38,16 @@ jobs:
         run: c8 --reporter=lcov --reporter=text --reporter=text-summary mocha
 
       - name: Code Climate (After)
-        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 16 }}
+        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 20 }}
         run: |
           ./codeclimate-test-reporter after-build -t lcov --exit-code $?
 
       - name: Codacy
-        if: ${{ github.event_name != 'pull_request' && env.CODACY_PROJECT_TOKEN != ''  && matrix.node == 16 }}
+        if: ${{ github.event_name != 'pull_request' && env.CODACY_PROJECT_TOKEN != ''  && matrix.node == 20 }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info
 
       - name: Codecov
-        if: ${{ github.event_name != 'pull_request' && env.CODECOV_TOKEN != '' && matrix.node == 16 }}
+        if: ${{ github.event_name != 'pull_request' && env.CODECOV_TOKEN != '' && matrix.node == 20 }}
         run: |
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov

@@ -1,5 +1,5 @@
-export declare type NtfyMessagePriority = '5' | 'max' | 'urgent' | '4' | 'high' | '3' | 'default' | '2' | 'low' | '1' | 'min';
-export declare type NtfyMessageOptions = {
+export type NtfyMessagePriority = '5' | 'max' | 'urgent' | '4' | 'high' | '3' | 'default' | '2' | 'low' | '1' | 'min';
+export interface NtfyMessageOptions {
     server?: string;
     topic: string;
     priority?: NtfyMessagePriority;
@@ -11,8 +11,8 @@ export declare type NtfyMessageOptions = {
     iconURL?: string;
     fileAttachmentURL?: string;
     fileName?: string;
-};
-export declare type FetchHeaders = {
+}
+export interface FetchHeaders {
     Title?: string;
     Priority?: NtfyMessagePriority;
     Tags?: string;
@@ -21,4 +21,4 @@ export declare type FetchHeaders = {
     Attach?: string;
     Filename?: string;
     Cache?: 'no';
-};
+}

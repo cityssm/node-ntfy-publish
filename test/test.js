@@ -1,4 +1,4 @@
-import * as assert from 'assert';
+import assert from 'node:assert';
 import ntfyPublish from '../index.js';
 const ntfyTopic = 'github_cityssm_node-ntfy-publish_test';
 describe('ntfy-publish', () => {

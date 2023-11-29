@@ -1,17 +1,22 @@
-import * as types from './types.js'
-
 import * as fs from 'node:fs/promises'
-import fetch from 'node-fetch'
+
+import type {
+  FetchHeaders,
+  NtfyMessageOptions,
+  NtfyMessagePriority
+} from './types.js'
 
 export const DEFAULT_SERVER = 'https://ntfy.sh'
-export const DEFAULT_PRIORITY: types.NtfyMessagePriority = 'default'
+export const DEFAULT_PRIORITY: NtfyMessagePriority = 'default'
 
-export async function publish(ntfyMessage: types.NtfyMessageOptions) {
+export async function publish(
+  ntfyMessage: NtfyMessageOptions
+): Promise<boolean> {
   /*
    * Set Server
    */
 
-  let server = ntfyMessage.server || DEFAULT_SERVER
+  let server = ntfyMessage.server ?? DEFAULT_SERVER
 
   if (server.slice(-1) !== '/') {
     server += '/'
@@ -21,23 +26,23 @@ export async function publish(ntfyMessage: types.NtfyMessageOptions) {
    * Build Headers
    */
 
-  const messageHeaders: types.FetchHeaders = {
-    Priority: ntfyMessage.priority || DEFAULT_PRIORITY
+  const messageHeaders: FetchHeaders = {
+    Priority: ntfyMessage.priority ?? DEFAULT_PRIORITY
   }
 
-  if (ntfyMessage.title) {
+  if (ntfyMessage.title !== undefined) {
     messageHeaders.Title = ntfyMessage.title
   }
 
-  if (ntfyMessage.tags) {
+  if (ntfyMessage.tags !== undefined) {
     messageHeaders.Tags = ntfyMessage.tags.join(',')
   }
 
-  if (ntfyMessage.clickURL) {
+  if (ntfyMessage.clickURL !== undefined) {
     messageHeaders.Click = ntfyMessage.clickURL
   }
 
-  if (ntfyMessage.iconURL) {
+  if (ntfyMessage.iconURL !== undefined) {
     messageHeaders.Icon = ntfyMessage.iconURL
   }
 
@@ -45,7 +50,7 @@ export async function publish(ntfyMessage: types.NtfyMessageOptions) {
 
   let hasLocalAttachment = false
 
-  if (ntfyMessage.fileAttachmentURL) {
+  if (ntfyMessage.fileAttachmentURL !== undefined) {
     hasLocalAttachment = !(
       ntfyMessage.fileAttachmentURL.toLowerCase().startsWith('http://') ||
       ntfyMessage.fileAttachmentURL.toLowerCase().startsWith('https://')
@@ -56,19 +61,19 @@ export async function publish(ntfyMessage: types.NtfyMessageOptions) {
     }
   }
 
-  let fileData: Buffer
+  let fileData: Buffer | undefined
 
   if (hasLocalAttachment) {
-    fileData = await fs.readFile(ntfyMessage.fileAttachmentURL)
+    fileData = await fs.readFile(ntfyMessage.fileAttachmentURL as string)
   }
 
-  if (ntfyMessage.fileName) {
+  if (ntfyMessage.fileName !== undefined) {
     messageHeaders.Filename = ntfyMessage.fileName
   }
 
   // Cache
 
-  if ('cache' in ntfyMessage && !ntfyMessage.cache) {
+  if (Object.hasOwn(ntfyMessage, 'cache') && !(ntfyMessage.cache ?? true)) {
     messageHeaders.Cache = 'no'
   }
 
@@ -78,11 +83,17 @@ export async function publish(ntfyMessage: types.NtfyMessageOptions) {
 
   const response = await fetch(server + ntfyMessage.topic, {
     method: 'POST',
-    body: hasLocalAttachment ? fileData : ntfyMessage.message || '',
-    headers: messageHeaders
+    body: hasLocalAttachment ? fileData : ntfyMessage.message ?? '',
+    headers: messageHeaders as Record<string, string>
   })
 
   return response.ok
 }
+
+export type {
+  FetchHeaders,
+  NtfyMessageOptions,
+  NtfyMessagePriority
+} from './types.js'
 
 export default publish

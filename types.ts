@@ -11,7 +11,7 @@ export type NtfyMessagePriority =
   | '1'
   | 'min'
 
-export type NtfyMessageOptions = {
+export interface NtfyMessageOptions {
   server?: string
   topic: string
   priority?: NtfyMessagePriority
@@ -25,7 +25,7 @@ export type NtfyMessageOptions = {
   fileName?: string
 }
 
-export type FetchHeaders = {
+export interface FetchHeaders {
   Title?: string
   Priority?: NtfyMessagePriority
   Tags?: string
