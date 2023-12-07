@@ -1,3 +1,6 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable security/detect-non-literal-fs-filename */
+
 import fs from 'node:fs/promises'
 
 import type {
