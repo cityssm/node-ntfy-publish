@@ -8,8 +8,8 @@
   },
   "exports": "./index.js",
   "scripts": {
-    "test": "mocha",
-    "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary mocha"
+    "test": "node --test",
+    "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary node --test"
   },
   "repository": {
     "type": "git",
