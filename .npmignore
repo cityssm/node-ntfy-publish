@@ -8,9 +8,9 @@ test
 .codeclimate.yml
 .deepsource.toml
 .eslintignore
-.eslintrc.json
 .gitignore
 .npmignore
 .prettierignore
-.prettierrc.json
+eslint.config.*
+prettier.config.*
 tsconfig.json

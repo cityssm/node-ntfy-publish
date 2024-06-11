@@ -1,8 +1,9 @@
 import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import ntfyPublish from '../index.js';
 const ntfyTopic = 'github_cityssm_node-ntfy-publish_test';
-describe('ntfy-publish', () => {
-    it('Sends a message with minimal settings', async () => {
+await describe('ntfy-publish', async () => {
+    await it('Sends a message with minimal settings', async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
             title: 'Test Default Message',
@@ -11,7 +12,7 @@ describe('ntfy-publish', () => {
         });
         assert.strictEqual(success, true);
     });
-    it('Sends a message with an external URL attachment', async () => {
+    await it('Sends a message with an external URL attachment', async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
             priority: 'low',
@@ -22,7 +23,7 @@ describe('ntfy-publish', () => {
         });
         assert.strictEqual(success, true);
     });
-    it('Sends a message with a local file attachment', async () => {
+    await it('Sends a message with a local file attachment', async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
             priority: 'low',
@@ -34,7 +35,7 @@ describe('ntfy-publish', () => {
         });
         assert.strictEqual(success, true);
     });
-    it('Sends a message with additional settings', async () => {
+    await it('Sends a message with additional settings', async () => {
         const success = await ntfyPublish({
             topic: ntfyTopic,
             priority: 'high',

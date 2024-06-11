@@ -29,9 +29,8 @@
   },
   "homepage": "https://github.com/cityssm/node-ntfy-publish#readme",
   "devDependencies": {
-    "@types/assert": "^1.5.10",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.10.4",
-    "eslint-config-cityssm": "^1.2.0"
+    "@types/node": "^20.14.2",
+    "eslint-config-cityssm": "^4.0.0",
+    "prettier-config-cityssm": "^1.0.0"
   }
 }
