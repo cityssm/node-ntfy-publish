@@ -30,7 +30,8 @@ export default async function publish(ntfyMessage) {
         }
     }
     const fileData = hasLocalAttachment
-        ? await fs.readFile(ntfyMessage.fileAttachmentURL)
+        ?
+            await fs.readFile(ntfyMessage.fileAttachmentURL)
         : undefined;
     if (ntfyMessage.fileName !== undefined) {
         messageHeaders.Filename = ntfyMessage.fileName;

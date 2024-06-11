@@ -1,6 +1,3 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable security/detect-non-literal-fs-filename */
-
 import fs from 'node:fs/promises'
 
 import type {
@@ -12,6 +9,11 @@ import type {
 export const DEFAULT_SERVER = 'https://ntfy.sh'
 export const DEFAULT_PRIORITY: NtfyMessagePriority = 'default'
 
+/**
+ * Send a message through an ntfy server.
+ * @param ntfyMessage The message to post.
+ * @returns True if the message was posted successfully.
+ */
 export default async function publish(
   ntfyMessage: NtfyMessageOptions
 ): Promise<boolean> {
@@ -65,7 +67,8 @@ export default async function publish(
   }
 
   const fileData = hasLocalAttachment
-    ? await fs.readFile(ntfyMessage.fileAttachmentURL as string)
+    ? // eslint-disable-next-line security/detect-non-literal-fs-filename
+      await fs.readFile(ntfyMessage.fileAttachmentURL as string)
     : undefined
 
   if (ntfyMessage.fileName !== undefined) {
