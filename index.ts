@@ -12,7 +12,7 @@ export const DEFAULT_PRIORITY: NtfyMessagePriority = 'default'
 /**
  * Send a message through an ntfy server.
  * @param ntfyMessage The message to post.
- * @returns True if the message was posted successfully.
+ * @returns `true` if the message was posted.
  */
 export default async function publish(
   ntfyMessage: NtfyMessageOptions
@@ -99,3 +99,5 @@ export type {
   NtfyMessageOptions,
   NtfyMessagePriority
 } from './types.js'
+
+export { NtfyTagEmojis } from './emoji.js'

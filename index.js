@@ -46,3 +46,4 @@ export default async function publish(ntfyMessage) {
     });
     return response.ok;
 }
+export { NtfyTagEmojis } from './emoji.js';
