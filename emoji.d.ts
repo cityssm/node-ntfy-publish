@@ -1,5 +1,6 @@
 /**
- * See https://docs.ntfy.sh/emojis/ for latest list.
+ * A list of supported ntfy tag emojis.
+ * - See https://docs.ntfy.sh/emojis/ for latest list.
  */
 export declare const ntfyTagEmojis: Set<string>;
 /**

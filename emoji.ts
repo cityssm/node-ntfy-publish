@@ -2,7 +2,8 @@
 /* eslint-disable @cspell/spellchecker */
 
 /**
- * See https://docs.ntfy.sh/emojis/ for latest list.
+ * A list of supported ntfy tag emojis.
+ * - See https://docs.ntfy.sh/emojis/ for latest list.
  */
 export const ntfyTagEmojis = new Set<string>([
   'grinning',
