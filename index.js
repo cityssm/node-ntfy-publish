@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { ntfyMessagePriorityDefault } from './priorities.js';
 /**
  * The default ntfy server to use.
  */
@@ -10,7 +11,7 @@ export const DEFAULT_SERVER = DEFAULT_NTFY_SERVER;
 /**
  * The default priority to use when sending a message.
  */
-export const DEFAULT_NTFY_PRIORITY = 'default';
+export const DEFAULT_NTFY_PRIORITY = ntfyMessagePriorityDefault;
 /**
  * @deprecated Use `DEFAULT_NTFY_PRIORITY` instead.
  */

@@ -1,10 +1,7 @@
 import fs from 'node:fs/promises'
 
-import type {
-  FetchHeaders,
-  NtfyMessageOptions,
-  NtfyMessagePriority
-} from './types.js'
+import { ntfyMessagePriorityDefault } from './priorities.js'
+import type { FetchHeaders, NtfyMessageOptions } from './types.js'
 
 /**
  * The default ntfy server to use.
@@ -19,7 +16,7 @@ export const DEFAULT_SERVER = DEFAULT_NTFY_SERVER
 /**
  * The default priority to use when sending a message.
  */
-export const DEFAULT_NTFY_PRIORITY: NtfyMessagePriority = 'default'
+export const DEFAULT_NTFY_PRIORITY = ntfyMessagePriorityDefault
 
 /**
  * @deprecated Use `DEFAULT_NTFY_PRIORITY` instead.
