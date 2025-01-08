@@ -1,3 +1,6 @@
+// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable @cspell/spellchecker */
+
 export const NtfyTagEmojis = new Set<string>([
   'grinning',
   'smiley',
