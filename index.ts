@@ -112,10 +112,15 @@ export default async function publish(
 }
 
 export {
-  ntfyMessagePriorityMax,
-  ntfyMessagePriorityHigh,
+  ntfyMessagePrioritiesDefault,
+  ntfyMessagePrioritiesHigh,
+  ntfyMessagePrioritiesLow,
+  ntfyMessagePrioritiesMax,
+  ntfyMessagePrioritiesMin,
   ntfyMessagePriorityDefault,
+  ntfyMessagePriorityHigh,
   ntfyMessagePriorityLow,
+  ntfyMessagePriorityMax,
   ntfyMessagePriorityMin
 } from './priorities.js'
 
