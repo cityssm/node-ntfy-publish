@@ -1,13 +1,30 @@
 import fs from 'node:fs/promises';
-export const DEFAULT_SERVER = 'https://ntfy.sh';
-export const DEFAULT_PRIORITY = 'default';
+/**
+ * The default ntfy server to use.
+ */
+export const DEFAULT_NTFY_SERVER = 'https://ntfy.sh';
+/**
+ * The default priority to use when sending a message.
+ */
+export const DEFAULT_NTFY_PRIORITY = 'default';
+/**
+ * Send a message through an ntfy server.
+ * @param ntfyMessage The message to post.
+ * @returns `true` if the message was posted.
+ */
 export default async function publish(ntfyMessage) {
-    let server = ntfyMessage.server ?? DEFAULT_SERVER;
+    /*
+     * Set Server
+     */
+    let server = ntfyMessage.server ?? DEFAULT_NTFY_SERVER;
     if (!server.endsWith('/')) {
         server += '/';
     }
+    /*
+     * Build Headers
+     */
     const messageHeaders = {
-        Priority: ntfyMessage.priority ?? DEFAULT_PRIORITY
+        Priority: ntfyMessage.priority ?? DEFAULT_NTFY_PRIORITY
     };
     if (ntfyMessage.title !== undefined) {
         messageHeaders.Title = ntfyMessage.title;
@@ -21,6 +38,7 @@ export default async function publish(ntfyMessage) {
     if (ntfyMessage.iconURL !== undefined) {
         messageHeaders.Icon = ntfyMessage.iconURL;
     }
+    // Attachments
     let hasLocalAttachment = false;
     if (ntfyMessage.fileAttachmentURL !== undefined) {
         hasLocalAttachment = !(ntfyMessage.fileAttachmentURL.toLowerCase().startsWith('http://') ||
@@ -30,15 +48,19 @@ export default async function publish(ntfyMessage) {
         }
     }
     const fileData = hasLocalAttachment
-        ?
+        ? // eslint-disable-next-line security/detect-non-literal-fs-filename
             await fs.readFile(ntfyMessage.fileAttachmentURL)
         : undefined;
     if (ntfyMessage.fileName !== undefined) {
         messageHeaders.Filename = ntfyMessage.fileName;
     }
+    // Cache
     if (Object.hasOwn(ntfyMessage, 'cache') && !(ntfyMessage.cache ?? true)) {
         messageHeaders.Cache = 'no';
     }
+    /*
+     * Send Message
+     */
     const response = await fetch(server + ntfyMessage.topic, {
         method: 'POST',
         body: hasLocalAttachment ? fileData : ntfyMessage.message ?? '',

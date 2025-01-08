@@ -6,8 +6,15 @@ import type {
   NtfyMessagePriority
 } from './types.js'
 
-export const DEFAULT_SERVER = 'https://ntfy.sh'
-export const DEFAULT_PRIORITY: NtfyMessagePriority = 'default'
+/**
+ * The default ntfy server to use.
+ */
+export const DEFAULT_NTFY_SERVER = 'https://ntfy.sh'
+
+/**
+ * The default priority to use when sending a message.
+ */
+export const DEFAULT_NTFY_PRIORITY: NtfyMessagePriority = 'default'
 
 /**
  * Send a message through an ntfy server.
@@ -21,7 +28,7 @@ export default async function publish(
    * Set Server
    */
 
-  let server = ntfyMessage.server ?? DEFAULT_SERVER
+  let server = ntfyMessage.server ?? DEFAULT_NTFY_SERVER
 
   if (!server.endsWith('/')) {
     server += '/'
@@ -32,7 +39,7 @@ export default async function publish(
    */
 
   const messageHeaders: FetchHeaders = {
-    Priority: ntfyMessage.priority ?? DEFAULT_PRIORITY
+    Priority: ntfyMessage.priority ?? DEFAULT_NTFY_PRIORITY
   }
 
   if (ntfyMessage.title !== undefined) {
