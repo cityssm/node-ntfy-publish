@@ -21,5 +21,6 @@ export declare const DEFAULT_PRIORITY: "default";
  * @returns `true` if the message was posted.
  */
 export default function publish(ntfyMessage: NtfyMessageOptions): Promise<boolean>;
+export { ntfyMessagePriorityMax, ntfyMessagePriorityHigh, ntfyMessagePriorityDefault, ntfyMessagePriorityLow, ntfyMessagePriorityMin } from './priorities.js';
 export type { FetchHeaders, NtfyMessageOptions, NtfyMessagePriority } from './types.js';
 export { ntfyTagEmojis, isSupportedTagEmoji } from './emoji.js';

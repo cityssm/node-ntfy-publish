@@ -1,4 +1,5 @@
-export type NtfyMessagePriority = '5' | 'max' | 'urgent' | '4' | 'high' | '3' | 'default' | '2' | 'low' | '1' | 'min';
+import type { ntfyMessagePriorityDefault, ntfyMessagePriorityHigh, ntfyMessagePriorityLow, ntfyMessagePriorityMax, ntfyMessagePriorityMin } from './priorities.js';
+export type NtfyMessagePriority = (typeof ntfyMessagePriorityMax)[number] | (typeof ntfyMessagePriorityHigh)[number] | (typeof ntfyMessagePriorityDefault)[number] | (typeof ntfyMessagePriorityLow)[number] | (typeof ntfyMessagePriorityMin)[number];
 export interface NtfyMessageOptions {
     /** The ntfy server to publish to */
     server?: string;

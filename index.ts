@@ -111,13 +111,18 @@ export default async function publish(
   return response.ok
 }
 
+export {
+  ntfyMessagePriorityMax,
+  ntfyMessagePriorityHigh,
+  ntfyMessagePriorityDefault,
+  ntfyMessagePriorityLow,
+  ntfyMessagePriorityMin
+} from './priorities.js'
+
 export type {
   FetchHeaders,
   NtfyMessageOptions,
   NtfyMessagePriority
 } from './types.js'
 
-export {
-  ntfyTagEmojis,
-  isSupportedTagEmoji
-} from './emoji.js'
+export { ntfyTagEmojis, isSupportedTagEmoji } from './emoji.js'
