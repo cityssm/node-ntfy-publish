@@ -117,4 +117,7 @@ export type {
   NtfyMessagePriority
 } from './types.js'
 
-export { NtfyTagEmojis } from './emoji.js'
+export {
+  ntfyTagEmojis,
+  isSupportedTagEmoji
+} from './emoji.js'

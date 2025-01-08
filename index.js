@@ -76,4 +76,4 @@ export default async function publish(ntfyMessage) {
     });
     return response.ok;
 }
-export { NtfyTagEmojis } from './emoji.js';
+export { ntfyTagEmojis, isSupportedTagEmoji } from './emoji.js';

@@ -22,4 +22,4 @@ export declare const DEFAULT_PRIORITY: "default";
  */
 export default function publish(ntfyMessage: NtfyMessageOptions): Promise<boolean>;
 export type { FetchHeaders, NtfyMessageOptions, NtfyMessagePriority } from './types.js';
-export { NtfyTagEmojis } from './emoji.js';
+export { ntfyTagEmojis, isSupportedTagEmoji } from './emoji.js';

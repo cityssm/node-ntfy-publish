@@ -1,6 +1,9 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
 /* eslint-disable @cspell/spellchecker */
-export const NtfyTagEmojis = new Set([
+/**
+ * See https://docs.ntfy.sh/emojis/ for latest list.
+ */
+export const ntfyTagEmojis = new Set([
     'grinning',
     'smiley',
     'smile',
@@ -1814,3 +1817,11 @@ export const NtfyTagEmojis = new Set([
     'scotland',
     'wales'
 ]);
+/**
+ * Tests if an emoji is supported by the tag list.
+ * @param emoji - emoji to check
+ * @returns `true` if the emoji is supported by the tag list, `false` otherwise
+ */
+export function isSupportedTagEmoji(emoji) {
+    return ntfyTagEmojis.has(emoji);
+}
