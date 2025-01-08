@@ -4,9 +4,17 @@ import fs from 'node:fs/promises';
  */
 export const DEFAULT_NTFY_SERVER = 'https://ntfy.sh';
 /**
+ * @deprecated Use `DEFAULT_NTFY_SERVER` instead.
+ */
+export const DEFAULT_SERVER = DEFAULT_NTFY_SERVER;
+/**
  * The default priority to use when sending a message.
  */
 export const DEFAULT_NTFY_PRIORITY = 'default';
+/**
+ * @deprecated Use `DEFAULT_NTFY_PRIORITY` instead.
+ */
+export const DEFAULT_PRIORITY = DEFAULT_NTFY_PRIORITY;
 /**
  * Send a message through an ntfy server.
  * @param ntfyMessage The message to post.
