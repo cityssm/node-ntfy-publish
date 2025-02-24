@@ -30,7 +30,7 @@
   "homepage": "https://github.com/cityssm/node-ntfy-publish#readme",
   "devDependencies": {
     "@types/node": "^22.10.5",
-    "eslint-config-cityssm": "^18.3.0",
+    "eslint-config-cityssm": "^20.0.0",
     "prettier-config-cityssm": "^1.0.0"
   }
 }
