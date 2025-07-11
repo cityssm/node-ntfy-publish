@@ -1,16 +1,18 @@
 .git
 .github
 .nyc_output
+.sonarlint
+.vscode
+
 coverage
 node_modules
 test
 
-.codeclimate.yml
 .deepsource.toml
-.eslintignore
 .gitignore
 .npmignore
 .prettierignore
+
 eslint.config.*
 prettier.config.*
 tsconfig.json

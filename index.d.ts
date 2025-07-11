@@ -4,10 +4,6 @@ import type { NtfyMessageOptions } from './types.js';
  */
 export declare const DEFAULT_NTFY_SERVER = "https://ntfy.sh";
 /**
- * @deprecated Use `DEFAULT_NTFY_SERVER` instead.
- */
-export declare const DEFAULT_SERVER = "https://ntfy.sh";
-/**
  * The default priority to use when sending a message.
  */
 export declare const DEFAULT_NTFY_PRIORITY: "3";
@@ -23,4 +19,4 @@ export declare const DEFAULT_PRIORITY: "3";
 export default function publish(ntfyMessage: NtfyMessageOptions): Promise<boolean>;
 export { ntfyMessagePrioritiesDefault, ntfyMessagePrioritiesHigh, ntfyMessagePrioritiesLow, ntfyMessagePrioritiesMax, ntfyMessagePrioritiesMin, ntfyMessagePriorityDefault, ntfyMessagePriorityHigh, ntfyMessagePriorityLow, ntfyMessagePriorityMax, ntfyMessagePriorityMin } from './priorities.js';
 export type { FetchHeaders, NtfyMessageOptions, NtfyMessagePriority } from './types.js';
-export { ntfyTagEmojis, isSupportedTagEmoji } from './emoji.js';
+export { isSupportedTagEmoji, ntfyTagEmojis } from './emoji.js';

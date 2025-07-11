@@ -9,11 +9,6 @@ import type { FetchHeaders, NtfyMessageOptions } from './types.js'
 export const DEFAULT_NTFY_SERVER = 'https://ntfy.sh'
 
 /**
- * @deprecated Use `DEFAULT_NTFY_SERVER` instead.
- */
-export const DEFAULT_SERVER = DEFAULT_NTFY_SERVER
-
-/**
  * The default priority to use when sending a message.
  */
 export const DEFAULT_NTFY_PRIORITY = ntfyMessagePriorityDefault
@@ -127,4 +122,4 @@ export type {
   NtfyMessagePriority
 } from './types.js'
 
-export { ntfyTagEmojis, isSupportedTagEmoji } from './emoji.js'
+export { isSupportedTagEmoji, ntfyTagEmojis } from './emoji.js'

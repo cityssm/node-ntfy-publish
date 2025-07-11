@@ -1,0 +1,6 @@
+{
+  "sonarlint.connectedMode.project": {
+    "connectionId": "cityssm",
+    "projectKey": "cityssm_node-ntfy-publish"
+  }
+}

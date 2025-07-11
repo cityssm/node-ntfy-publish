@@ -10,9 +10,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [18, 20, 21]
+        node: [20, 22, 23]
     env:
-      CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
     name: Node ${{ matrix.node }}
@@ -27,20 +26,8 @@ jobs:
           npm ci
           npm install -g c8
 
-      - name: Code Climate (Before)
-        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 20 }}
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./codeclimate-test-reporter
-          chmod +x codeclimate-test-reporter
-          ./codeclimate-test-reporter before-build
-
       - name: Run Coverage Testing
         run: npm run coverage
-
-      - name: Code Climate (After)
-        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' && matrix.node == 20 }}
-        run: |
-          ./codeclimate-test-reporter after-build -t lcov --exit-code $?
 
       - name: Codecov
         if: ${{ github.event_name != 'pull_request' && env.CODECOV_TOKEN != '' && matrix.node == 20 }}

@@ -1,5 +1,6 @@
 import { configWebApp, cspellWords, tseslint } from 'eslint-config-cityssm';
-export const config = tseslint.config(...configWebApp, {
+export const config = tseslint.config(configWebApp, {
+    files: ['**/*.ts'],
     rules: {
         '@cspell/spellchecker': [
             'warn',

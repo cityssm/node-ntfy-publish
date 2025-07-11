@@ -27,12 +27,12 @@ export interface NtfyMessageOptions {
     fileName?: string;
 }
 export interface FetchHeaders {
-    Title?: string;
+    Attach?: string;
+    Cache?: 'no';
+    Click?: string;
+    Filename?: string;
+    Icon?: string;
     Priority?: NtfyMessagePriority;
     Tags?: string;
-    Click?: string;
-    Icon?: string;
-    Attach?: string;
-    Filename?: string;
-    Cache?: 'no';
+    Title?: string;
 }
