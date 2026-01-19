@@ -1,16 +1,16 @@
-import { configWebApp, cspellWords, tseslint } from 'eslint-config-cityssm'
+import baseConfig, {
+  defineConfig
+} from 'eslint-config-cityssm/eslint.packageConfig.js'
+import { cspellWords } from 'eslint-config-cityssm/exports'
 
-export const config = tseslint.config(configWebApp, {
+export const config = defineConfig(baseConfig, {
   files: ['**/*.ts'],
   rules: {
     '@cspell/spellchecker': [
       'warn',
       {
         cspell: {
-          words: [
-            ...cspellWords,
-            'ntfy'
-          ]
+          words: [...cspellWords, 'ntfy']
         }
       }
     ]

@@ -22,7 +22,7 @@ In short, be nice! :smile:
 ### How to report a bug or suggest an enhancement
 
 **If you find a security vulnerability, do NOT open an issue. Email
-corporateapps@cityssm.on.ca instead.**
+<corporateapps@cityssm.on.ca> instead.**
 
 For all other bug reports, feature requests, or enhancements,
 open an issue and use the closest template.

@@ -26,8 +26,8 @@
     "test": "node --test"
   },
   "devDependencies": {
-    "@types/node": "^24.0.13",
-    "eslint-config-cityssm": "^26.0.0",
+    "@types/node": "^25.0.9",
+    "eslint-config-cityssm": "^36.1.0",
     "prettier-config-cityssm": "^1.0.0"
   },
   "engines": {

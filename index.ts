@@ -103,6 +103,8 @@ export default async function publish(
   return response.ok
 }
 
+export { isSupportedTagEmoji, ntfyTagEmojis } from './emoji.js'
+
 export {
   ntfyMessagePrioritiesDefault,
   ntfyMessagePrioritiesHigh,
@@ -121,5 +123,3 @@ export type {
   NtfyMessageOptions,
   NtfyMessagePriority
 } from './types.js'
-
-export { isSupportedTagEmoji, ntfyTagEmojis } from './emoji.js'

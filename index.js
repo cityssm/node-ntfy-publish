@@ -73,5 +73,5 @@ export default async function publish(ntfyMessage) {
     });
     return response.ok;
 }
-export { ntfyMessagePrioritiesDefault, ntfyMessagePrioritiesHigh, ntfyMessagePrioritiesLow, ntfyMessagePrioritiesMax, ntfyMessagePrioritiesMin, ntfyMessagePriorityDefault, ntfyMessagePriorityHigh, ntfyMessagePriorityLow, ntfyMessagePriorityMax, ntfyMessagePriorityMin } from './priorities.js';
 export { isSupportedTagEmoji, ntfyTagEmojis } from './emoji.js';
+export { ntfyMessagePrioritiesDefault, ntfyMessagePrioritiesHigh, ntfyMessagePrioritiesLow, ntfyMessagePrioritiesMax, ntfyMessagePrioritiesMin, ntfyMessagePriorityDefault, ntfyMessagePriorityHigh, ntfyMessagePriorityLow, ntfyMessagePriorityMax, ntfyMessagePriorityMin } from './priorities.js';
