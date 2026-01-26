@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.0.9",
-    "eslint-config-cityssm": "^36.1.0",
+    "eslint-config-cityssm": "^37.0.0",
     "prettier-config-cityssm": "^1.0.0"
   },
   "engines": {
